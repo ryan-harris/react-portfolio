@@ -7,10 +7,10 @@ export default function Project({ project }) {
         <img src={project.image} className='fluid-img' alt='portfolio img' />
         <div className='portfolio-overlay'>
           <h3 className='portfolio-item-title'>{project.name}</h3>
-          <a href={project.demo} className='btn'>
+          <a href={project.demo} className='btn' target='_blank'>
             Demo
           </a>
-          <a href={project.repo} className='btn'>
+          <a href={project.repo} className='btn' target='_blank'>
             Repo
           </a>
         </div>
