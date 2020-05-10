@@ -9,8 +9,8 @@ function Social() {
             className='col-md-6 col-sm-6 wow rotateInUpLeft'
             data-wow-delay='0.3s'
           >
-            <div className='media github'>
-              <a href='https://github.com/ryan-harris'>
+            <a href='https://github.com/ryan-harris'>
+              <div className='media github'>
                 <div className='media-object pull-left'>
                   <i className='fa fa-github' />
                 </div>
@@ -20,15 +20,15 @@ function Social() {
                   </h4>
                   <h3>GitHub</h3>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
           <div
             className='col-md-6 col-sm-6 wow rotateInUpLeft'
             data-wow-delay='0.6s'
           >
-            <div className='media linkedin'>
-              <a href='https://www.linkedin.com/in/harris-ryan/'>
+            <a href='https://www.linkedin.com/in/harris-ryan/'>
+              <div className='media linkedin'>
                 <div className='media-object pull-left'>
                   <i className='fa fa-linkedin' />
                 </div>
@@ -38,8 +38,8 @@ function Social() {
                   </h4>
                   <h3>LinkedIn</h3>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
