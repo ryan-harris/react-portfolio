@@ -1,6 +1,6 @@
 body {
   background: #ffffff;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   color: #606060;
   position: relative;
@@ -89,7 +89,7 @@ footer {
 
 /* START HOME */
 .home {
-  background: url("../images/home-bg.jpg");
+  background: url('../images/home-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -248,7 +248,7 @@ footer {
   font-weight: bold;
   color: #ffffff;
   width: 40%;
-  margin: 10px auto 0;
+  margin: 10px 5px 0;
   font-size: 1.5rem;
 }
 
@@ -350,7 +350,7 @@ footer {
 
 /* START ABOUT */
 .tm-about {
-  background: url("../images/about-bg.jpg");
+  background: url('../images/about-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -404,7 +404,7 @@ footer {
   margin-right: 20px;
 }
 .tm-social-title {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
 /* END SOCIAL */
