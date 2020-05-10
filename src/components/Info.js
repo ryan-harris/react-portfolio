@@ -40,14 +40,14 @@ export default function Info() {
       <p>
         <span className='tm-info-label'>Resume</span>{' '}
         <a href='ryanharris.pdf' className='tm-red-text'>
-          PDF
+          pdf
         </a>{' '}
         <a
           href='ryanharris.docx'
           style={{ marginLeft: '10px' }}
           className='tm-red-text'
         >
-          DOCX
+          docx
         </a>
       </p>
     </div>
