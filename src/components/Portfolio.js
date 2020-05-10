@@ -14,11 +14,9 @@ function Portfolio() {
       <div className='container'>
         <div className='row'>
           <div className='col-md-12 wow bounce'>
-            <div className='title'>
-              <h2 className='tm-portfolio-title'>
-                My <strong>Portfolio</strong>
-              </h2>
-            </div>
+            <h2 className='title tm-portfolio-title'>
+              My <strong>Portfolio</strong>
+            </h2>
             <div className='iso-section'>
               <div className='iso-box-section'>
                 <div className='iso-box-wrapper col4-iso-box'>
