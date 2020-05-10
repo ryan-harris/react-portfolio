@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Github Portfolio Builder",
+    "image": "images/ghport.png",
+    "demo": "https://ghport.herokuapp.com/",
+    "repo": "https://github.com/ryan-harris/portfolio-builder"
+  },
+  {
+    "id": 2,
+    "name": "Covid-19 Tracker",
+    "image": "images/covid19.png",
+    "demo": "https://jkaplanis.github.io/covid19-tracker/",
+    "repo": "https://github.com/jkaplanis/covid19-tracker"
+  },
+  {
+    "id": 3,
+    "name": "Employee Directory",
+    "image": "images/employeeDirectory.jpg",
+    "demo": "https://ryan-harris.github.io/react-employee-directory",
+    "repo": "https://github.com/ryan-harris/react-employee-directory"
+  },
+  {
+    "id": 4,
+    "name": "Weather Now!",
+    "image": "images/weathernow.png",
+    "demo": "https://ryan-harris.github.io/weather-dashboard/",
+    "repo": "https://github.com/ryan-harris/weather-dashboard"
+  },
+  {
+    "id": 5,
+    "name": "Day Planner",
+    "image": "images/dayplanner.png",
+    "demo": "https://ryan-harris.github.io/day-planner/",
+    "repo": "https://github.com/ryan-harris/day-planner"
+  },
+  {
+    "id": 6,
+    "name": "Note Taker",
+    "image": "images/notetaker.png",
+    "demo": "https://vast-meadow-13571.herokuapp.com/",
+    "repo": "https://github.com/ryan-harris/note-taker"
+  },
+  {
+    "id": 7,
+    "name": "Burger Logger",
+    "image": "images/burgerlogger.png",
+    "demo": "https://pure-inlet-39981.herokuapp.com/",
+    "repo": "https://github.com/ryan-harris/burger-logger"
+  }
+]
