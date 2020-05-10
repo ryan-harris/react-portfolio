@@ -19,6 +19,10 @@ export default function Info() {
         <span className='tm-info-label'>Email</span> harris.ucla@gmail.com
       </p>
       <p>
+        <span className='tm-info-label'>Education</span> Bachelors in Computer
+        Science, UCLA
+      </p>
+      <p>
         <span className='tm-info-label'>GitHub</span>{' '}
         <a
           href='https://github.com/ryan-harris'
@@ -41,12 +45,8 @@ export default function Info() {
         </a>
       </p>
       <p>
-        <span className='tm-info-label'>Education</span> Bachelors in Computer
-        Science, UCLA
-      </p>
-      <p>
         <span className='tm-info-label'>Resume</span>{' '}
-        <a href='ryanharris.pdf' className='tm-red-text'>
+        <a href='ryanharris.pdf' className='tm-red-text' target='_blank'>
           pdf
         </a>{' '}
         <a

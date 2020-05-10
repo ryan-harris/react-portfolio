@@ -53,7 +53,7 @@ export default function Skills() {
         />
       </div>
       <h4 className='tm-progress-label'>
-        HTML/CSS <small className='progress-percent-small'>75%</small>
+        React <small className='progress-percent-small'>75%</small>
       </h4>
       <div className='progress tm-progress'>
         <div
@@ -66,7 +66,7 @@ export default function Skills() {
         />
       </div>
       <h4 className='tm-progress-label'>
-        React <small className='progress-percent-small'>70%</small>
+        HTML/CSS <small className='progress-percent-small'>70%</small>
       </h4>
       <div className='progress tm-progress'>
         <div
