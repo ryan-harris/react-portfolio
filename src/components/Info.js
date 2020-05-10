@@ -41,6 +41,13 @@ export default function Info() {
         <span className='tm-info-label'>Resume</span>{' '}
         <a href='ryanharris.pdf' className='tm-red-text'>
           PDF
+        </a>{' '}
+        <a
+          href='ryanharris.docx'
+          style={{ marginLeft: '10px' }}
+          className='tm-red-text'
+        >
+          DOCX
         </a>
       </p>
     </div>
