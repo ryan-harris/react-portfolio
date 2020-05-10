@@ -9,7 +9,11 @@ function Social() {
             className='col-md-6 col-sm-6 wow rotateInUpLeft'
             data-wow-delay='0.3s'
           >
-            <a href='https://github.com/ryan-harris' target='_blank'>
+            <a
+              href='https://github.com/ryan-harris'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <div className='media github'>
                 <div className='media-object pull-left'>
                   <i className='fa fa-github' />
@@ -27,7 +31,11 @@ function Social() {
             className='col-md-6 col-sm-6 wow rotateInUpLeft'
             data-wow-delay='0.6s'
           >
-            <a href='https://www.linkedin.com/in/harris-ryan/' target='_blank'>
+            <a
+              href='https://www.linkedin.com/in/harris-ryan/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <div className='media linkedin'>
                 <div className='media-object pull-left'>
                   <i className='fa fa-linkedin' />

@@ -8,10 +8,20 @@ export default function Project({ project }) {
         <div className='portfolio-overlay'>
           <h3 className='portfolio-item-title'>{project.name}</h3>
           <div className='row mx-n2'>
-            <a href={project.demo} className='btn col' target='_blank'>
+            <a
+              href={project.demo}
+              className='btn col'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Demo
             </a>
-            <a href={project.repo} className='btn col ml-2' target='_blank'>
+            <a
+              href={project.repo}
+              className='btn col ml-2'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Repo
             </a>
           </div>

@@ -20,7 +20,12 @@ export default function Info() {
       </p>
       <p>
         <span className='tm-info-label'>GitHub</span>{' '}
-        <a href='https://github.com/ryan-harris' className='tm-red-text'>
+        <a
+          href='https://github.com/ryan-harris'
+          className='tm-red-text'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           ryan-harris
         </a>
       </p>
@@ -29,6 +34,8 @@ export default function Info() {
         <a
           href='https://www.linkedin.com/in/harris-ryan/'
           className='tm-red-text'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           linkedin.com/in/harris-ryan
         </a>
