@@ -14,7 +14,7 @@ function Portfolio() {
       <div className='container'>
         <div className='row'>
           <div className='col-md-12 wow bounce'>
-            <h2 className='title tm-portfolio-title'>
+            <h2 className='tm-portfolio-title'>
               My <strong>Portfolio</strong>
             </h2>
             <div className='iso-section'>

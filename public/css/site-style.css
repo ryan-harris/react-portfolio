@@ -137,9 +137,9 @@ footer {
 /* END HOME */
 
 /* START WORK */
-.tm-padding-top-bottom-100 {
-  padding-top: 100px;
-  padding-bottom: 100px;
+.tm-padding-top-bottom-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 .tm-work-h3 {
   color: #eb5424;
@@ -183,6 +183,9 @@ footer {
 .tm-portfolio-title {
   text-align: center;
   text-transform: uppercase;
+  color: #303030;
+  font-size: 52px;
+  padding-bottom: 40px;
 }
 .portfolio-item-title {
   font-weight: bold;
@@ -335,16 +338,16 @@ footer {
 .progress-bar-danger {
   background: #eb5424;
 }
-.tm-progress-label {
-  font-size: 12px;
+.skill-left {
+  font-size: 16px;
   font-weight: bold;
   padding-top: 10px;
   text-transform: uppercase;
 }
-.progress-percent-small {
+.skill-right {
   display: block;
   float: right;
-  padding-right: 80px;
+  padding-right: 90px;
 }
 /* END RESUME */
 
@@ -389,7 +392,7 @@ footer {
 }
 .tm-social a {
   color: #ffffff;
-  display: inline-block;
+  /* display: inline-block; */
   text-decoration: none;
 }
 .tm-social .media .fa {

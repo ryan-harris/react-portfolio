@@ -7,7 +7,7 @@ function Social() {
         <div className='row'>
           <div
             className='col-md-6 col-sm-6 wow rotateInUpLeft'
-            data-wow-delay='0.3s'
+            data-wow-delay='0.6s'
           >
             <a
               href='https://github.com/ryan-harris'
