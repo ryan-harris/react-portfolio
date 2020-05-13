@@ -24,19 +24,13 @@ function Header() {
         <nav className='collapse navbar-collapse' id='rock-navigation'>
           <ul className='nav navbar-nav navbar-right main-navigation text-uppercase'>
             <li>
-              <a href='#home' className='smoothScroll'>
-                Home
-              </a>
+              <a href='#home'>Home</a>
             </li>
             <li>
-              <a href='#portfolio' className='smoothScroll'>
-                Portfolio
-              </a>
+              <a href='#portfolio'>Portfolio</a>
             </li>
             <li>
-              <a href='#resume' className='smoothScroll'>
-                Resume
-              </a>
+              <a href='#resume'>Resume</a>
             </li>
           </ul>
         </nav>
