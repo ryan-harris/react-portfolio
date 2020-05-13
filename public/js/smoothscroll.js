@@ -6,9 +6,9 @@
  * Date: 10-Sep-2013
  * Version: 1.0.1
  */
-if (!window["jQuery"])
+if (!window['jQuery'])
   alert(
-    "The jQuery library must be included before the smoothscroll.js file.  The plugin will not work propery."
+    'The jQuery library must be included before the smoothscroll.js file.  The plugin will not work propery.'
   );
 
 /**
@@ -18,23 +18,23 @@ if (!window["jQuery"])
  * @version 2.1.2
  */
 (function (f) {
-  "use strict";
-  "function" === typeof define && define.amd
-    ? define(["jquery"], f)
-    : "undefined" !== typeof module && module.exports
-    ? (module.exports = f(require("jquery")))
+  'use strict';
+  'function' === typeof define && define.amd
+    ? define(['jquery'], f)
+    : 'undefined' !== typeof module && module.exports
+    ? (module.exports = f(require('jquery')))
     : f(jQuery);
 })(function ($) {
-  "use strict";
+  'use strict';
   function n(a) {
     return (
       !a.nodeName ||
       -1 !==
         $.inArray(a.nodeName.toLowerCase(), [
-          "iframe",
-          "#document",
-          "html",
-          "body"
+          'iframe',
+          '#document',
+          'html',
+          'body'
         ])
     );
   }
@@ -44,11 +44,11 @@ if (!window["jQuery"])
   var p = ($.scrollTo = function (a, d, b) {
     return $(window).scrollTo(a, d, b);
   });
-  p.defaults = { axis: "xy", duration: 0, limit: !0 };
+  p.defaults = { axis: 'xy', duration: 0, limit: !0 };
   $.fn.scrollTo = function (a, d, b) {
-    "object" === typeof d && ((b = d), (d = 0));
-    "function" === typeof b && (b = { onAfter: b });
-    "max" === a && (a = 9e9);
+    'object' === typeof d && ((b = d), (d = 0));
+    'function' === typeof b && (b = { onAfter: b });
+    'max' === a && (a = 9e9);
     b = $.extend({}, p.defaults, b);
     d = d || b.duration;
     var u = b.queue && 1 < b.axis.length;
@@ -76,35 +76,35 @@ if (!window["jQuery"])
           f = {},
           t;
         switch (typeof e) {
-          case "number":
-          case "string":
+          case 'number':
+          case 'string':
             if (/^([+-]=?)?\d+(\.\d+)?(px|%)?$/.test(e)) {
               e = h(e);
               break;
             }
             e = l ? $(e) : $(e, q);
-          case "object":
+          case 'object':
             if (e.length === 0) return;
             if (e.is || e.style) t = (e = $(e)).offset();
         }
         var v = ($.isFunction(b.offset) && b.offset(q, e)) || b.offset;
-        $.each(b.axis.split(""), function (a, c) {
-          var d = "x" === c ? "Left" : "Top",
+        $.each(b.axis.split(''), function (a, c) {
+          var d = 'x' === c ? 'Left' : 'Top',
             m = d.toLowerCase(),
-            g = "scroll" + d,
+            g = 'scroll' + d,
             h = r[g](),
             n = p.max(q, c);
           t
             ? ((f[g] = t[m] + (l ? 0 : h - r.offset()[m])),
               b.margin &&
-                ((f[g] -= parseInt(e.css("margin" + d), 10) || 0),
-                (f[g] -= parseInt(e.css("border" + d + "Width"), 10) || 0)),
+                ((f[g] -= parseInt(e.css('margin' + d), 10) || 0),
+                (f[g] -= parseInt(e.css('border' + d + 'Width'), 10) || 0)),
               (f[g] += v[m] || 0),
               b.over[m] &&
-                (f[g] += e["x" === c ? "width" : "height"]() * b.over[m]))
+                (f[g] += e['x' === c ? 'width' : 'height']() * b.over[m]))
             : ((d = e[m]),
               (f[g] =
-                d.slice && "%" === d.slice(-1)
+                d.slice && '%' === d.slice(-1)
                   ? (parseFloat(d) / 100) * n
                   : d));
           b.limit &&
@@ -119,10 +119,10 @@ if (!window["jQuery"])
     });
   };
   p.max = function (a, d) {
-    var b = "x" === d ? "Width" : "Height",
-      h = "scroll" + b;
+    var b = 'x' === d ? 'Width' : 'Height',
+      h = 'scroll' + b;
     if (!n(a)) return a[h] - $(a)[b.toLowerCase()]();
-    var b = "client" + b,
+    var b = 'client' + b,
       k = a.ownerDocument || a.document,
       l = k.documentElement,
       k = k.body;
@@ -150,7 +150,7 @@ if (!window["jQuery"])
  * @version 2.0.0
  */
 !(function (e) {
-  "function" == typeof define && define.amd ? define(["jquery"], e) : e(jQuery);
+  'function' == typeof define && define.amd ? define(['jquery'], e) : e(jQuery);
 })(function (e) {
   function t(t, o, n) {
     var i = o.hash.slice(1),
@@ -160,38 +160,38 @@ if (!window["jQuery"])
       var l = e(n.target);
       if (
         !(
-          (n.lock && l.is(":animated")) ||
+          (n.lock && l.is(':animated')) ||
           (n.onBefore && !1 === n.onBefore(t, a, l))
         )
       ) {
         if ((n.stop && l.stop(!0), n.hash)) {
-          var r = a.id === i ? "id" : "name",
-            s = e("<a> </a>")
+          var r = a.id === i ? 'id' : 'name',
+            s = e('<a> </a>')
               .attr(r, i)
               .css({
-                position: "absolute",
+                position: 'absolute',
                 top: e(window).scrollTop(),
                 left: e(window).scrollLeft()
               });
-          (a[r] = ""),
-            e("body").prepend(s),
+          (a[r] = ''),
+            e('body').prepend(s),
             (location.hash = o.hash),
             s.remove(),
             (a[r] = i);
         }
-        l.scrollTo(a, n).trigger("notify.serialScroll", [a]);
+        l.scrollTo(a, n).trigger('notify.serialScroll', [a]);
       }
     }
   }
-  var o = location.href.replace(/#.*/, ""),
+  var o = location.href.replace(/#.*/, ''),
     n = (e.localScroll = function (t) {
-      e("body").localScroll(t);
+      e('body').localScroll(t);
     });
   return (
     (n.defaults = {
       duration: 1e3,
-      axis: "y",
-      event: "click",
+      axis: 'y',
+      event: 'click',
       stop: !0,
       target: window,
       autoscroll: !0
@@ -201,7 +201,7 @@ if (!window["jQuery"])
         return (
           !!this.href &&
           !!this.hash &&
-          this.href.replace(this.hash, "") === o &&
+          this.href.replace(this.hash, '') === o &&
           (!i.filter || e(this).is(i.filter))
         );
       }
@@ -211,10 +211,10 @@ if (!window["jQuery"])
           location.hash &&
           (i.target && window.scrollTo(0, 0), t(0, location, i)),
         i.lazy
-          ? this.on(i.event, "a,area", function (e) {
+          ? this.on(i.event, 'a,area', function (e) {
               a.call(this) && t(e, this, i);
             })
-          : this.find("a,area")
+          : this.find('a,area')
               .filter(a)
               .bind(i.event, function (e) {
                 t(e, this, i);
@@ -230,5 +230,5 @@ if (!window["jQuery"])
 
 // Initialize all .smoothScroll links
 jQuery(function ($) {
-  $.localScroll({ filter: ".smoothScroll" });
+  $.localScroll({ filter: '.smoothScroll' });
 });

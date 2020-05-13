@@ -1,92 +1,248 @@
+(function ($, window, document) {
+  // our plugin constructor
+  var OnePageNav = function (elem, options) {
+    this.elem = elem;
+    this.$elem = $(elem);
+    this.options = options;
+    this.metadata = this.$elem.data('plugin-options');
+    this.$win = $(window);
+    this.sections = {};
+    this.didScroll = false;
+    this.$doc = $(document);
+    this.docHeight = this.$doc.height();
+  };
 
+  // the plugin prototype
+  OnePageNav.prototype = {
+    defaults: {
+      navItems: 'a',
+      currentClass: 'current',
+      changeHash: false,
+      easing: 'swing',
+      filter: '',
+      scrollSpeed: 750,
+      scrollThreshold: 0.5,
+      begin: false,
+      end: false,
+      scrollChange: false
+    },
 
-// ISOTOPE FILTER
+    init: function () {
+      // Introduce defaults that can be extended either
+      // globally or using an object literal.
+      this.config = $.extend({}, this.defaults, this.options, this.metadata);
 
-jQuery(document).ready(function($){
+      this.$nav = this.$elem.find(this.config.navItems);
 
-	if ( $('.iso-box-wrapper').length > 0 ) { 
+      //Filter any links out of the nav
+      if (this.config.filter !== '') {
+        this.$nav = this.$nav.filter(this.config.filter);
+      }
 
-	    var $container 	= $('.iso-box-wrapper'), 
-	    	$imgs 		= $('.iso-box img');
+      //Handle clicks on the nav
+      this.$nav.on('click.onePageNav', $.proxy(this.handleClick, this));
 
+      //Get the section positions
+      this.getPositions();
 
+      //Handle scroll changes
+      this.bindInterval();
 
-	    $container.imagesLoaded(function () {
+      //Update the positions on resize too
+      this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
 
-	    	$container.isotope({
-				layoutMode: 'fitRows',
-				itemSelector: '.iso-box'
-	    	});
+      return this;
+    },
 
-	    	$imgs.load(function(){
-	    		$container.isotope('reLayout');
-	    	})
+    adjustNav: function (self, $parent) {
+      self.$elem
+        .find('.' + self.config.currentClass)
+        .removeClass(self.config.currentClass);
+      $parent.addClass(self.config.currentClass);
+    },
 
-	    });
+    bindInterval: function () {
+      var self = this;
+      var docHeight;
 
-	    //filter items on button click
+      self.$win.on('scroll.onePageNav', function () {
+        self.didScroll = true;
+      });
 
-	    $('.filter-wrapper li a').click(function(){
+      self.t = setInterval(function () {
+        docHeight = self.$doc.height();
 
-	        var $this = $(this), filterValue = $this.attr('data-filter');
+        //If it was scrolled
+        if (self.didScroll) {
+          self.didScroll = false;
+          self.scrollChange();
+        }
 
-			$container.isotope({ 
-				filter: filterValue,
-				animationOptions: { 
-				    duration: 750, 
-				    easing: 'linear', 
-				    queue: false, 
-				}              	 
-			});	            
+        //If the document height changes
+        if (docHeight !== self.docHeight) {
+          self.docHeight = docHeight;
+          self.getPositions();
+        }
+      }, 250);
+    },
 
-			// don't proceed if already selected 
+    getHash: function ($link) {
+      return $link.attr('href').split('#')[1];
+    },
 
-			if ( $this.hasClass('selected') ) { 
-				return false; 
-			}
+    getPositions: function () {
+      var self = this;
+      var linkHref;
+      var topPos;
+      var $target;
 
-			var filter_wrapper = $this.closest('.filter-wrapper');
-			filter_wrapper.find('.selected').removeClass('selected');
-			$this.addClass('selected');
+      self.$nav.each(function () {
+        linkHref = self.getHash($(this));
+        $target = $('#' + linkHref);
 
-	      return false;
-	    }); 
+        if ($target.length) {
+          topPos = $target.offset().top;
+          self.sections[linkHref] = Math.round(topPos);
+        }
+      });
+    },
 
-	}
+    getSection: function (windowPos) {
+      var returnValue = null;
+      var windowHeight = Math.round(
+        this.$win.height() * this.config.scrollThreshold
+      );
 
-});
+      for (var section in this.sections) {
+        if (this.sections[section] - windowHeight < windowPos) {
+          returnValue = section;
+        }
+      }
 
+      return returnValue;
+    },
+
+    handleClick: function (e) {
+      var self = this;
+      var $link = $(e.currentTarget);
+      var $parent = $link.parent();
+      var newLoc = '#' + self.getHash($link);
+
+      if (!$parent.hasClass(self.config.currentClass)) {
+        //Start callback
+        if (self.config.begin) {
+          self.config.begin();
+        }
+
+        //Change the highlighted nav item
+        self.adjustNav(self, $parent);
+
+        //Removing the auto-adjust on scroll
+        self.unbindInterval();
+
+        //Scroll to the correct position
+        self.scrollTo(newLoc, function () {
+          //Do we need to change the hash?
+          if (self.config.changeHash) {
+            window.location.hash = newLoc;
+          }
+
+          //Add the auto-adjust on scroll back in
+          self.bindInterval();
+
+          //End callback
+          if (self.config.end) {
+            self.config.end();
+          }
+        });
+      }
+
+      e.preventDefault();
+    },
+
+    scrollChange: function () {
+      var windowTop = this.$win.scrollTop();
+      var position = this.getSection(windowTop);
+      var $parent;
+
+      //If the position is set
+      if (position !== null) {
+        $parent = this.$elem.find('a[href$="#' + position + '"]').parent();
+
+        //If it's not already the current section
+        if (!$parent.hasClass(this.config.currentClass)) {
+          //Change the highlighted nav item
+          this.adjustNav(this, $parent);
+
+          //If there is a scrollChange callback
+          if (this.config.scrollChange) {
+            this.config.scrollChange($parent);
+          }
+        }
+      }
+    },
+
+    scrollTo: function (target, callback) {
+      var offset = $(target).offset().top;
+
+      $('html, body').animate(
+        {
+          scrollTop: offset
+        },
+        this.config.scrollSpeed,
+        this.config.easing,
+        callback
+      );
+    },
+
+    unbindInterval: function () {
+      clearInterval(this.t);
+      this.$win.unbind('scroll.onePageNav');
+    }
+  };
+
+  OnePageNav.defaults = OnePageNav.prototype.defaults;
+
+  $.fn.onePageNav = function (options) {
+    return this.each(function () {
+      new OnePageNav(this, options).init();
+    });
+  };
+})(jQuery, window, document);
 
 // MAIN NAVIGATION
+jQuery(function ($) {
+  $('.main-navigation').onePageNav({
+    scrollThreshold: 0.2, // Adjust if Navigation highlights too early or too late
+    scrollOffset: 75, //Height of Navigation Bar
+    filter: ':not(.external)',
+    changeHash: true
+  });
 
- $('.main-navigation').onePageNav({
-        scrollThreshold: 0.2, // Adjust if Navigation highlights too early or too late
-        scrollOffset: 75, //Height of Navigation Bar
-        filter: ':not(.external)',
-        changeHash: true
-    }); 
-
-    /* NAVIGATION VISIBLE ON SCROLL */
+  /* NAVIGATION VISIBLE ON SCROLL */
+  mainNav();
+  $(window).scroll(function () {
     mainNav();
-    $(window).scroll(function () {
-        mainNav();
-    });
+  });
 
-    function mainNav() {
-        var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-        if (top > 40) $('.sticky-navigation').stop().animate({
-            "opacity": '1',
-            "top": '0'
-        });
-        else $('.sticky-navigation').stop().animate({
-            "opacity": '0',
-            "top": '-75'
-        });
-    }
+  function mainNav() {
+    var top =
+      (document.documentElement && document.documentElement.scrollTop) ||
+      document.body.scrollTop;
+    if (top > 40)
+      $('.sticky-navigation').stop().animate({
+        opacity: '1',
+        top: '0'
+      });
+    else
+      $('.sticky-navigation').stop().animate({
+        opacity: '0',
+        top: '-75'
+      });
+  }
 
-
-// HIDE MOBILE MENU AFTER CLIKING ON A LINK
-
-    $('.navbar-collapse a').click(function(){
-        $(".navbar-collapse").collapse('hide');
-    });
+  // HIDE MOBILE MENU AFTER CLIKING ON A LINK
+  $('.navbar-collapse a').click(function () {
+    $('.navbar-collapse').collapse('hide');
+  });
+});

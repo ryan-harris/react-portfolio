@@ -459,12 +459,7 @@ input {
   .tm-home-title {
     font-size: 40px;
   }
-}
-
-/* START MEDIA 360 */
-@media screen and (max-width: 360px) {
   .navbar-default .navbar-brand {
     padding-top: 2px;
   }
 }
-/* END MEDIA 360 */

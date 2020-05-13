@@ -1,10 +1,10 @@
-(function ($, window, document, undefined) {
+(function ($, window, document) {
   // our plugin constructor
   var OnePageNav = function (elem, options) {
     this.elem = elem;
     this.$elem = $(elem);
     this.options = options;
-    this.metadata = this.$elem.data("plugin-options");
+    this.metadata = this.$elem.data('plugin-options');
     this.$win = $(window);
     this.sections = {};
     this.didScroll = false;
@@ -15,11 +15,11 @@
   // the plugin prototype
   OnePageNav.prototype = {
     defaults: {
-      navItems: "a",
-      currentClass: "current",
+      navItems: 'a',
+      currentClass: 'current',
       changeHash: false,
-      easing: "swing",
-      filter: "",
+      easing: 'swing',
+      filter: '',
       scrollSpeed: 750,
       scrollThreshold: 0.5,
       begin: false,
@@ -35,12 +35,12 @@
       this.$nav = this.$elem.find(this.config.navItems);
 
       //Filter any links out of the nav
-      if (this.config.filter !== "") {
+      if (this.config.filter !== '') {
         this.$nav = this.$nav.filter(this.config.filter);
       }
 
       //Handle clicks on the nav
-      this.$nav.on("click.onePageNav", $.proxy(this.handleClick, this));
+      this.$nav.on('click.onePageNav', $.proxy(this.handleClick, this));
 
       //Get the section positions
       this.getPositions();
@@ -49,14 +49,14 @@
       this.bindInterval();
 
       //Update the positions on resize too
-      this.$win.on("resize.onePageNav", $.proxy(this.getPositions, this));
+      this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
 
       return this;
     },
 
     adjustNav: function (self, $parent) {
       self.$elem
-        .find("." + self.config.currentClass)
+        .find('.' + self.config.currentClass)
         .removeClass(self.config.currentClass);
       $parent.addClass(self.config.currentClass);
     },
@@ -65,7 +65,7 @@
       var self = this;
       var docHeight;
 
-      self.$win.on("scroll.onePageNav", function () {
+      self.$win.on('scroll.onePageNav', function () {
         self.didScroll = true;
       });
 
@@ -87,7 +87,7 @@
     },
 
     getHash: function ($link) {
-      return $link.attr("href").split("#")[1];
+      return $link.attr('href').split('#')[1];
     },
 
     getPositions: function () {
@@ -98,7 +98,7 @@
 
       self.$nav.each(function () {
         linkHref = self.getHash($(this));
-        $target = $("#" + linkHref);
+        $target = $('#' + linkHref);
 
         if ($target.length) {
           topPos = $target.offset().top;
@@ -126,7 +126,7 @@
       var self = this;
       var $link = $(e.currentTarget);
       var $parent = $link.parent();
-      var newLoc = "#" + self.getHash($link);
+      var newLoc = '#' + self.getHash($link);
 
       if (!$parent.hasClass(self.config.currentClass)) {
         //Start callback
@@ -185,7 +185,7 @@
     scrollTo: function (target, callback) {
       var offset = $(target).offset().top;
 
-      $("html, body").animate(
+      $('html, body').animate(
         {
           scrollTop: offset
         },
@@ -197,7 +197,7 @@
 
     unbindInterval: function () {
       clearInterval(this.t);
-      this.$win.unbind("scroll.onePageNav");
+      this.$win.unbind('scroll.onePageNav');
     }
   };
 
