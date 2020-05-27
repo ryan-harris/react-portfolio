@@ -1,5 +1,12 @@
 [
   {
+    "id": 7,
+    "name": "Agora Tutoring",
+    "image": "images/agora-homepage.png",
+    "demo": "https://agora-tutor.herokuapp.com/",
+    "repo": "https://github.com/agoralearn/agora"
+  },
+  {
     "id": 1,
     "name": "Github Portfolio Builder",
     "image": "images/ghport.png",
@@ -40,12 +47,5 @@
     "image": "images/notetaker.png",
     "demo": "https://vast-meadow-13571.herokuapp.com/",
     "repo": "https://github.com/ryan-harris/note-taker"
-  },
-  {
-    "id": 7,
-    "name": "Burger Logger",
-    "image": "images/burgerlogger.png",
-    "demo": "https://pure-inlet-39981.herokuapp.com/",
-    "repo": "https://github.com/ryan-harris/burger-logger"
   }
 ]
