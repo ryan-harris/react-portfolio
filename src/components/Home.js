@@ -12,9 +12,8 @@ function Home() {
             </h1>
             <h2 className='tm-home-subtitle'>Software Developer</h2>
             <p>
-              Professional <strong>Full Stack Web Developer</strong> and{' '}
-              <strong>Java Developer</strong> with a passion for creating{' '}
-              innovative and optimized solutions.
+              Professional <strong>Full Stack Web Developer</strong> with a
+              passion for creating innovative and optimized solutions.
             </p>
             <a
               href='#portfolio'
